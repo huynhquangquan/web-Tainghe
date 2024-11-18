@@ -1,0 +1,613 @@
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>audiotech.com</title>
+   <link rel="stylesheet" href="style.css">
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+   <script src="https://kit.fontawesome.com/367278d2a4.js" crossorigin="anonymous"></script>
+
+</head>
+
+<body>
+   <!-- -----------------------------------------------------------Header--------------------------------------------------------- -->
+   <div class="header__contain">
+      <div class="header-content-left">
+         <div class="header-logo">
+            <img src="img/headerlogo.png" alt="hi">
+         </div>
+      </div>
+      <div class="header-content-right">
+         <div class="header__content">
+            <!-- <div class="nav">  -->
+            <div class="nav-grid">
+
+               <!-- <div class="nav__list"> -->
+               <div class="nav__item"><a href="web.html">Trang chủ</a></div>
+               <div class="nav__item">
+                  <div class="order-history-button"> Lịch sử đơn hàng </div>
+               </div>
+               <div class="order-history-display">
+                  <div class="order-history-area">
+                     <div class="order-history-content">
+
+                        <div class="close-order-history-button">
+                           <i class="fa-solid fa-xmark"></i>
+                        </div>
+
+                        <div class="order-history-header">
+                           <h2> Lịch sử mua hàng </h2>
+                        </div>
+
+                        <div class="order-history-body">
+                           <div class="order-tracking-body-frame">
+
+                              <div class="total-order-history">
+                                 <h3>Tất cả </h3>
+                                 <h3 id="total-order-history"> (12) </h3>
+                              </div>
+
+                              <div class="order-list-area">
+                                 <div class="order-list-table-container">
+                                    <div class="order-list-table-frame">
+                                       <table class="order-list-table">
+                                          <thead>
+                                             <tr class="order-list-table-title">
+                                                <th> Mã đơn hàng </th>
+                                                <th>Thông tin sản phẩm </th>
+                                                <th>Tổng thanh toán</th>
+                                                <th>Ngày đặt hàng</th>
+                                                <th> Lịch sử </th>
+                                             </tr>
+                                          </thead>
+                                          <tbody id="order-history-list-body">
+
+                                          </tbody>
+
+                                       </table>
+                                    </div>
+                                 </div>
+                              </div>
+
+                           </div>
+                        </div>
+
+                     </div>
+                  </div>
+               </div>
+
+               
+               <div class="nav__item">
+                  <div class="order-tracking-button">Theo dõi đơn hàng</div>
+               </div>
+
+               <div class="order-tracking-display">
+                  <div class="order-tracking-area">
+                     <div class="order-tracking-content">
+
+                        <div class="close-order-tracking-button">
+                           <i class="fa-solid fa-xmark"></i>
+                        </div>
+
+                        <div class="order-tracking-header">
+                           <h2>Đơn hàng của tôi</h2>
+                        </div>
+
+                        <div class="order-tracking-body">
+                           <div class="order-tracking-body-frame">
+                              <div class="total-order-quantity">
+                                 <h3>Tất cả </h3>
+                                 <h3 id="total-order-quantity"> (12) </h3>
+                              </div>
+
+                              <div class="order-list-area">
+                                 <div class="order-list-table-container">
+                                    <div class="order-list-table-frame">
+                                       <table class="order-list-table">
+                                          <thead>
+                                             <tr class="order-list-table-title">
+                                                <th> Mã đơn hàng </th>
+                                                <th>Thông tin sản phẩm </th>
+                                                <th>Tổng thanh toán</th>
+                                                <th>Ngày đặt hàng</th>
+                                                <th>Trạng thái</th>
+                                             </tr>
+                                          </thead>
+                                          <tbody id="order-list-body">
+
+                                          </tbody>
+
+                                       </table>
+                                    </div>
+                                 </div>
+                              </div>
+
+                           </div>
+
+
+
+                        </div>
+
+                     </div>
+                  </div>
+               </div>
+
+
+
+
+               <div class="nav__item" id="signup-area">
+                  <p class="signup">Đăng kí</p>
+                  <div class="signup-form">
+                     <div class="signup-form-content">
+                        <h1>Đăng kí</h1>
+                        <form action="">
+                           <div class="form-group">
+                              <div class="input">
+                                 <input type="text" placeholder="Number phone" id="number-field">
+                                 <div class="warning"><span class="number-warning"></span></div>
+                              </div>
+                              <div class="input">
+                                 <input class="text" placeholder="Address" id="address-field">
+                                 <div class="warning"><span class="address-warning"></span></div>
+                              </div>
+                              <div class="input">
+                                 <input type="text" placeholder="Username" id="username-field">
+                                 <div class="warning"><span class="username-warning"></span></div>
+                              </div>
+                              <div class="input">
+                                 <div class="password-box-signup">
+                                 <input type="password" placeholder="Password" id="password-field">
+                                 <span class="toggle-password-signup">
+                                 <!--<i class="fa fa-eye"></i>-->
+                                 <i class="fa-solid fa-eye-slash"></i>
+                                 </span>
+                                 </div>
+                                 <div class="warning"><span class="password-warning"></span></div>
+                              </div>
+                              <div class="input">
+                                 <input type="password" placeholder="Confirm password" id="confirm-password-field">
+                                  <div class="warning"><span class="confirmation-warning"></span></div>
+                              </div>
+                           </div>
+                           <div class="verification">
+                              <input type="checkbox" id="info-verification"><span class="checkbox-warning">Tôi cam đoan
+                                 mọi thông tin đều đúng, nếu có sai sót, tôi sẽ chịu trách nhiệm.</span>
+                           </div>
+                           <div class="btn-form__submit">
+                              <input type="button" class="submit-signup" value="Đăng ký">
+                           </div>
+                        </form>
+
+                        <div class="close-signup">
+                           <i class="fa-solid fa-circle-xmark"></i>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <div class="nav__item" id="login-area">
+                  <p class="login">Đăng nhập</p>
+                  <div class="login-form">
+                     <div class="login-form-content">
+                        <h1>Đăng nhập</h1>
+                        <form action="">
+                           <div class="form-group">
+                              <div class="warning"><span class="incorrect-login"></span></div>
+                              <div class="input">
+                                 <input type="text" placeholder="Username" id="name-field">
+                              </div>
+                              <div class="input">
+                                  <div class="password-box-login">
+                                 <input type="password" placeholder="Password" id="pass-field">
+                                 <span class="toggle-password-login">
+                                 <!--<<i class="fa fa-eye"></i>-->
+                                 <i class="fa-solid fa-eye-slash"></i>
+                                 </span>
+                                 </div>
+                              </div>
+                           </div>
+
+                           <div class="btn-form__submit">
+                              <input type="button" class="submit-login" value="Đăng nhập" />
+                           </div>
+                        </form>
+                        <div class="signup-now">
+                           <p>Bạn chưa có tài khoảng? Đăng kí</p>
+                        </div>
+
+                        <div class="close-login">
+                           <i class="fa-solid fa-circle-xmark"></i>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+
+               <div class="nav__item-cart">
+                  <div class="cart">
+                     <div id="cartBtn" class="cart-button"> <i class="fa-solid fa-cart-shopping"> </i> </div>
+                  </div>
+
+                  <div id="cartDisplay" class="cart-display">
+                     <div class="cart-content">
+                        <div class="close-cart"> <i class="fa-solid fa-xmark"></i> </div>
+                        <div class="cart-body">
+                           <div class="card-heading"> <b> Giỏ hàng của tôi </b> </div>
+
+                           <div class="selected-products-list">
+
+                           </div>
+
+                           <div class="cart-bottom">
+                              <div class="total-price-area">
+                                 <!-- <div class="total-price-text"> Tổng cộng: </div>
+                              <div class="total-price"> 1.250.000₫ </div> -->
+                              </div>
+                              <div class="pay-area">
+                                 <div class="pay-button"> Thanh toán giỏ hàng </div>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+
+
+                  </div>
+               </div>
+
+               <div class="nav__item-user">
+                  <p id="username-display" class="user">
+                  </p>
+                  <div class="user-form">
+                     <div class="user-logout">
+                        <span class="logout">Đăng xuất</span>
+                     </div>
+                  </div>
+               </div>
+               <div id="admin-setting"><a href="admin.html"><i class="fa-solid fa-gear"></i></a></div>
+               <!-- </div> -->
+               <!-- </div> -->
+            </div>
+         </div>
+         <div class="search__contain">
+            <input id="search-input" type="search" class="search" name="s" value="" placeholder="Nhập từ khóa"
+               autocomplete="off">
+            <button class="search-button" id="search__button__icon" type="submit" onclick="search()"><i
+                  class="fa-solid fa-magnifying-glass"></i></button>
+            <button class="search-button" id="search__button" type="submit" onclick="search()">Tìm kiếm</button>
+         </div>
+      </div>
+   </div>
+   <!-- ---------------------------------------------------Slide------------------------------------- -->
+   <section class="slider">
+      <div class="slider-contain">
+         <img src="img/banner1.jfif" alt="slide1">
+         <img src="img/banner2.jfif" alt="slide2">
+         <img src="img/banner3.png" alt="slide3">
+
+      </div>
+      <div class="slider-contain-chevron">
+         <!-- <i class="fa-solid fa-chevron-left"></i> -->
+         <!-- <i class="fa-solid fa-chevron-right"></i> -->
+      </div>
+   </section>
+
+   <!-- ------------------------------------------------Bộ lọc------------------------------------------------ -->
+   <div class="box-filter">
+      <li class="filter-item">
+         <div class="filter-total">
+            <div class="filter-total-tittle">Bộ lọc <span><i class="fa-regular fa-filter-list"></i> </span></div>
+            <!-- <div class="filter-total-show"></div> -->
+         </div>
+      </li>
+
+      <li class="filter-item">
+         <div class="filter-item-brand">
+            <div class="filter-item-brand-tittle">Hãng
+               <div class="brand-chervon-down">
+                  <i class="fa-light fa-chevron-down"></i>
+               </div>
+               <div class="brand-chervon-up" style="display: none;">
+                  <i class="fa-light fa-chevron-up"></i>
+               </div>
+
+            </div>
+         </div>
+
+         <div class="filter-item-brand-show">
+            <div class="arrow-filter" style="left: 2rem;"> </div>
+            <div class="filter-menu-container">
+
+               <div class="filter-menu">
+                  <div class="filter-checkbox brandSony" id="brandSony">
+                     <div class="select-checkbox"> <img src="./img/Shop tai nghe/brand-logo/sony.png" alt=""> </div>
+                  </div>
+                  <div class="filter-checkbox brandAudioTechnica" id="brandAudioTechnica">
+                     <div class="select-checkbox"> <img src="./img/Shop tai nghe/brand-logo/audio-technica.png" alt="">
+                     </div>
+                  </div>
+                  <div class="filter-checkbox brandSkullcandy" id="brandSkullcandy">
+                     <div class="select-checkbox"> <img src="./img/Shop tai nghe/brand-logo/Skullcandy.png" alt="">
+                     </div>
+                  </div>
+                  <div class="filter-checkbox" id="brandSoundPEATS">
+                     <div class="select-checkbox"> <img src="./img/Shop tai nghe/brand-logo/SoundPEATS.png" alt="">
+                     </div>
+                  </div>
+                  <div class="filter-checkbox" id="brandApple">
+                     <div class="select-checkbox"> <img src="./img/Shop tai nghe/brand-logo/Apple.png" alt=""> </div>
+                  </div>
+                  <div class="filter-checkbox" id="brandAstellKern">
+                     <div class="select-checkbox"> <img src="./img/Shop tai nghe/brand-logo/Astell&Kern.png" alt="">
+                     </div>
+                  </div>
+                  <div class="filter-checkbox" id="brandBangOlufsen">
+                     <div class="select-checkbox"> <img src="./img/Shop tai nghe/brand-logo/Bang&Olufsen.png" alt="">
+                     </div>
+                  </div>
+                  <div class="filter-checkbox" id="brandBeats">
+                     <div class="select-checkbox"> <img src="./img/Shop tai nghe/brand-logo/Beats.png" alt=""> </div>
+                  </div>
+                  <div class="filter-checkbox" id="brandBeyerdynamic">
+                     <div class="select-checkbox"> <img src="./img/Shop tai nghe/brand-logo/Beyerdynamic.png" alt="">
+                     </div>
+                  </div>
+                  <div class="filter-checkbox" id="brandFIIL">
+                     <div class="select-checkbox"> <img src="./img/Shop tai nghe/brand-logo/Fill.jpg" alt=""> </div>
+                  </div>
+                  <div class="filter-checkbox" id="brandJBL">
+                     <div class="select-checkbox"> <img src="./img/Shop tai nghe/brand-logo/jbl.jpg" alt=""> </div>
+                  </div>
+                  <div class="filter-checkbox" id="brandKoss">
+                     <div class="select-checkbox"> <img src="./img/Shop tai nghe/brand-logo/koss.png" alt=""> </div>
+                  </div>
+                  <div class="filter-checkbox" id="brandMarshall">
+                     <div class="select-checkbox"> <img src="./img/Shop tai nghe/brand-logo/Marshall.png" alt=""> </div>
+                  </div>
+                  <div class="filter-checkbox" id="brandPhilips">
+                     <div class="select-checkbox"> <img src="./img/Shop tai nghe/brand-logo/philips.png" alt=""> </div>
+                  </div>
+                  <div class="filter-checkbox" id="brandPioneer">
+                     <div class="select-checkbox"> <img src="./img/Shop tai nghe/brand-logo/Pioneer.png" alt=""> </div>
+                  </div>
+                  <div class="filter-checkbox" id="brandPlantronics">
+                     <div class="select-checkbox"> <img src="./img/Shop tai nghe/brand-logo/Plantronics.png" alt="">
+                     </div>
+                  </div>
+                  <div class="filter-checkbox" id="brandSennheiser">
+                     <div class="select-checkbox"> <img src="./img/Shop tai nghe/brand-logo/Sennheiser.png" alt="">
+                     </div>
+                  </div>
+                  <div class="filter-checkbox" id="brandDefunc">
+                     <div class="select-checkbox"> <img src="./img/Shop tai nghe/brand-logo/Defunc.png" alt=""> </div>
+                  </div>
+                  <div class="filter-checkbox" id="brandHavit">
+                     <div class="select-checkbox"> <img src="./img/Shop tai nghe/brand-logo/Havit.png" alt=""> </div>
+                  </div>
+                  <div class="filter-checkbox" id="brandHuawei">
+                     <div class="select-checkbox"> <img src="./img/Shop tai nghe/brand-logo/Huawei.png" alt=""> </div>
+                  </div>
+                  <div class="filter-checkbox" id="brandMonster">
+                     <div class="select-checkbox"> <img src="./img/Shop tai nghe/brand-logo/Monster.png" alt=""> </div>
+                  </div>
+                  <div class="filter-checkbox" id="brandSabbat">
+                     <div class="select-checkbox"> <img src="./img/Shop tai nghe/brand-logo/Sabbat.png" alt=""> </div>
+                  </div>
+                  <div class="filter-checkbox" id="brandTribitAudio">
+                     <div class="select-checkbox"> <img src="./img/Shop tai nghe/brand-logo/TribitAudio.png" alt="">
+                     </div>
+                  </div>
+
+               </div>
+            </div>
+            <div class="filter-menu-btn">
+               <div class="brand-filter-close" onclick="brandFilterClose()">
+                  <div class="filter-close-btn">
+                     Đóng
+                  </div>
+               </div>
+               <div class="filter-seemore" onclick="showResult()">
+                  <div class="filter-seemore-btn">
+                     Xem kết quả
+                  </div>
+               </div>
+            </div>
+         </div>
+      </li>
+
+
+      <li class="filter-item">
+         <div class="filter-item-price">
+            <div class="filter-item-price-tittle"> Giá
+               <div class="price-chervon-down">
+                  <i class="fa-light fa-chevron-down"></i>
+               </div>
+               <div class="price-chervon-up" style="display: none;">
+                  <i class="fa-light fa-chevron-up"></i>
+               </div>
+
+            </div>
+         </div>
+
+         <div class="filter-item-price-show">
+            <div class="arrow-filter" style="left: 1.4rem;"> </div>
+            <div class="filter-menu-container">
+
+               <div class="filter-menu-price">
+                  <div class="filter-checkbox" id="under500k">
+                     <div class="select-checkbox"> 0₫ - 500.000₫ </div>
+                  </div>
+                  <div class="filter-checkbox" id="500k-1m">
+                     <div class="select-checkbox"> 500.000₫ - 1.000.000₫ </div>
+                  </div>
+                  <div class="filter-checkbox" id="1m-3m">
+                     <div class="select-checkbox"> 1.000.000₫ - 3.000.000₫ </div>
+                  </div>
+                  <div class="filter-checkbox" id="3m-5m">
+                     <div class="select-checkbox"> 3.000.000₫ - 5.000.000₫ </div>
+                  </div>
+                  <div class="filter-checkbox" id="5m-10m">
+                     <div class="select-checkbox"> 5.000.000₫ - 10.000.000₫ </div>
+                  </div>
+                  <div class="filter-checkbox" id="10m-15m">
+                     <div class="select-checkbox"> 10.000.000₫ - 15.000.000₫ </div>
+                  </div>
+                  <div class="filter-checkbox" id="over15m">
+                     <div class="select-checkbox"> Trên 15.000.000₫ </div>
+                  </div>
+               </div>
+            </div>
+            <div class="filter-menu-btn">
+               <div class="price-filter-close" onclick="priceFilterClose()">
+                  <div class="filter-close-btn">
+                     Đóng
+                  </div>
+               </div>
+               <div class="filter-seemore" onclick="showResult()">
+                  <div class="filter-seemore-btn">
+                     Xem kết quả
+                  </div>
+               </div>
+            </div>
+         </div>
+      </li>
+
+
+      <li class="filter-item">
+         <div class="filter-item-type">
+            <div class="filter-item-type-tittle"> Kiểu tai nghe
+               <div class="type-chervon-down">
+                  <i class="fa-light fa-chevron-down"></i>
+               </div>
+               <div class="type-chervon-up" style="display: none;">
+                  <i class="fa-light fa-chevron-up"></i>
+               </div>
+
+            </div>
+         </div>
+
+         <div class="filter-item-type-show">
+            <div class="arrow-filter" style="left: 4.8rem;"> </div>
+            <div class="filter-menu-container">
+
+               <div class="filter-menu">
+                  <div class="filter-checkbox" id="earbudsType">
+                     <div class="select-checkbox"> Earbuds </div>
+                  </div>
+                  <div class="filter-checkbox" id="inearType">
+                     <div class="select-checkbox"> In-ear </div>
+                  </div>
+                  <div class="filter-checkbox" id="onearType">
+                     <div class="select-checkbox"> On-ear </div>
+                  </div>
+                  <div class="filter-checkbox" id="overearsType">
+                     <div class="select-checkbox"> Over-ears </div>
+                  </div>
+               </div>
+            </div>
+            <div class="filter-menu-btn">
+               <div class="type-filter-close" onclick="typeFilterClose()">
+                  <div class="filter-close-btn">
+                     Đóng
+                  </div>
+               </div>
+               <div class="filter-seemore" onclick="showResult()">
+                  <div class="filter-seemore-btn">
+                     Xem kết quả
+                  </div>
+               </div>
+            </div>
+         </div>
+      </li>
+
+
+
+      <div class="sortproduct">Sắp xếp theo
+         <button class="lowtohigh">Giá tăng</button>
+         <button class="hightolow">Giá giảm</button>
+      </div>
+   </div>
+
+
+   <!-- --------------------------------------------------List-Product------------------------------------------------ -->
+   <div class="listProduct">
+      <div class="product-list">
+
+      </div>
+   </div>
+   <div class="pagination">
+      <!-- buttun chuyển phân trang -->
+   </div>
+   <!-- ---------------------------------------------Detial Product-------------------------------------------- -->
+   <div class="detail-product">
+      <!-- <div class="detail-product-content">
+         <div class="detail-product-content-left">
+            <img src="img/test.jpg" alt="">
+         </div>
+         <div class="detail-product-content-right">
+            <h2>Tên sản phẩm</h2>
+            <p>Hãng: SONY</p>
+            <p>Loại tai nghe: Over-ear</p>
+            <p>Mã sản phẩm: 1001</p>
+            <p>Tình trạng: Còn hàng</p>
+            <p>Giá: <span class="detail-price">10.000.000</span></p>
+            <div class="addtocart">Thêm vào giỏ hàng</div>
+            <div class="close-detail">
+               <i class="fa-solid fa-circle-xmark"></i>
+            </div>
+            
+         </div>
+      </div> -->
+
+   </div>
+
+   <!-- ---------------------------------------------------Footer----------------------------------------------------------------->
+   <footer class="footer">
+      <div class="footer-box">
+         <div class="footer-logo">
+            <img src="img/footerlogo.png" alt="">
+            <p> Kết nối với chúng tôi: </p>
+         </div>
+
+         <div class="footer-contact">
+            <li>contact: </li>
+            <li>email: </li>
+         </div>
+      </div>
+
+      <div class="footer-box">
+         <div class="footer-box-1">
+            <h4> Hỗ trợ khách hàng </h4>
+            <li><a href="#" class="footer-item__link"> Hướng dẫn thanh toán </a></li>
+            <li><a href="#" class="footer-item__link"> Hướng dẫn đổi trả </a></li>
+            <li><a href="#" class="footer-item__link"> Tra cứu lộ trình đơn hàng </a></li>
+         </div>
+      </div>
+
+      <div class="footer-box">
+         <h4> Tiện ích dành cho khách hàng</h4>
+         <li> <i class="fa-solid fa-truck-fast"></i> Giao hỏa tốc </li>
+         <li> <i class="fa-solid fa-arrow-right-arrow-left"></i> Đổi trả trong vòng 7 ngày </li>
+         <li> <i class="fa-solid fa-bag-shopping"></i> Miễn phí giao hàng hóa đơn từ 300k </li>
+         <li> <i class="fa-solid fa-thumbs-up"></i> Cam kết chính hãng 100% </li>
+      </div>
+
+      <div class="footer-box">
+         <div class="footer-box-3">
+            <h4> Các vị trí cửa hàng </h4>
+            <li> <i class="fa-solid fa-location-dot"></i> Showroom 1: 273 An Dương Vương, phường 3, Q5, TP.HCM </li>
+            <li> <i class="fa-solid fa-location-dot"></i> Showroom 2: 4 Tôn Đức Thắng, Bến Nghé, Q1, TP.HCM </li>
+            <li> <i class="fa-solid fa-location-dot"></i> Showroom 3: 105 Bà Huyện Thanh Quan, phường Võ Thị Sáu, Q3,
+               TP.HCM </li>
+         </div>
+      </div>
+
+      <div class="copyright-footer">
+         <span> copyright &copy; 2023 AUDIOTECH.com </span>
+      </div>
+
+   </footer>
+
+   <script src="script.js"></script>
+
+</body>
+
+</html>

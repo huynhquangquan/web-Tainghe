@@ -1,0 +1,497 @@
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title> audiotech.com </title>
+   <link rel="stylesheet" href="admin.css">
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+   <script src="https://kit.fontawesome.com/367278d2a4.js" crossorigin="anonymous"></script>
+
+</head>
+
+
+<body>
+   <div class="admin-container">
+      <div class="admin-left-menu-contain">
+         <div class="left-menu">
+            <ul class="left-menu-grid">
+               <li class="left-menu-item home-page"> <a href="web.html"> <i class="fa-solid fa-house"></i><span class="menu-admin">Trang chủ</span></a> </li>
+               <li class="left-menu-item" id="admin-view-product"> <i class="fa-solid fa-headphones"></i> <span class="menu-admin">Xem sản phẩm</span>
+               </li>
+
+               <li class="left-menu-item" id="admin-order-mana">
+                  <i class="fa-solid fa-list-check"></i> <span class="menu-admin">Quản lý đơn hàng</span>
+               </li>
+               <li class="left-menu-item" id="admin-view-customer"> <i class="fa-solid fa-user-group"></i><span class="menu-admin">Tài khoản khách hàng</span></li>
+               <li class="left-menu-item" id="sold-order">
+                  <i class="fa-solid fa-chart-simple"></i> Doanh thu </span>
+                  <div class="sold-order-filter-container">
+                     <div id="sold-order-filter">
+                        <button id="sold-order-product-btn" onclick="showListProductSold(listProductSold)"> Theo sản phẩm </button>
+                        <button id="sold-order-type-btn"> Theo loại </button>
+                        <button id="sold-order-year-btn"> Theo năm </button>
+                        <button id="sold-order-month-btn"> Theo tháng </button>
+                        <button id="sold-order-day-btn"> Theo ngày </button>
+                     </div>
+
+                     <span id="sold-order-filter-select">
+                        <form action="" id="sold-order-type">
+                           <select id="sold-order-type-select">
+                              <option value="On ear"> On-ear </option>
+                              <option value="In ear"> In-ear </option>
+                              <option value="over-ear"> Over-ear </option>
+                              <option value="earbud"> Earbud </option>
+                           </select>
+                           <button class="view-btn" id="show-soy-button" onclick="soldOrderTypeShow(event)"> Xem </button>
+                        </form>
+
+                        <form action="" id="sold-order-year">
+                           <select id="sold-order-year-select">
+                              <option value="2023"> 2023 </option>
+                              <option value="2022"> 2022 </option>
+                           </select>
+                           <button class="view-btn" id="show-soy-button" onclick="soldOrderYearShow(event)"> Xem </button>
+                        </form>
+
+                        <form action="" id="sold-order-month">
+                           <select name="" id="sold-order-month-select-year">
+                              <option value="2023"> 2023 </option>
+                              <option value="2022"> 2022 </option>
+                           </select>
+                           <select name="" id="sold-order-month-select">
+                              <option value="1"> tháng 1 </option>
+                              <option value="2"> tháng 2 </option>
+                              <option value="3"> tháng 3</option>
+                              <option value="4"> tháng 4</option>
+                              <option value="5"> tháng 5</option>
+                              <option value="6"> tháng 6</option>
+                              <option value="7"> tháng 7</option>
+                              <option value="8"> tháng 8</option>
+                              <option value="9"> tháng 9</option>
+                              <option value="10"> tháng 10</option>
+                              <option value="11"> tháng 11</option>
+                              <option value="12"> tháng 12</option>
+                           </select>
+                           <button class="view-btn" id="show-som-button" onclick="soldOrderMonthShow(event)"> Xem </button>
+                        </form>
+                        
+                        <form action="" id="sold-order-day">
+                           <input type="date" min="2022-01-01" max="" value="" id="sold-order-day-select" >
+                           <button class="view-btn" id="show-sod-button" onclick="soldOrderDayShow(event)"> xem </button>
+                        </form>
+                     </span>
+
+                  </div>
+
+               </li>
+            </ul>
+         </div>
+      </div>
+
+      <div class="admin-display-contain">
+
+         <!----------------------Xem sản phẩm---------------------->
+         <div class="admin-view-product-contain">
+            <div class="view-product">
+               <div class="view-product-header">
+                  <h2 class="view-product-header-left"> DANH SÁCH SẢN PHẨM </h2>
+                  <div class="add-product">
+                     <button class="add-product-button" onclick="adminViewProduct(returnNotEnoughProductToApprove())"> Sản phẩm không thể duyệt </button>
+                  </div>
+                  <div class="add-product">
+                     <button class="add-product-button" onclick="adminViewProduct(returnZeroQuantityProduct())"> Xem sản phẩm hết hàng </button>
+                  </div>
+                  <div class="add-product">
+                     <button class="add-product-button" onclick="adminViewProduct(returnProductDeleted())"> Xem sản phẩm đã xóa </button>
+                  </div>
+                  <div class="add-product">
+                     <button class="add-product-button" onclick="adminViewProduct(product)"> Xem toàn bộ sản phẩm </button>
+                  </div>
+                  <div class="view-product-header-right">
+                     <input type="text" id="search-product-input" placeholder="Tìm kiếm sản phẩm" onkeyup="searchProduct()">
+                     <button id="search-button" class="search__button" type="submit"
+                        style="border: none; background-color: transparent;"> <i class="fa-solid fa-magnifying-glass"
+                           style="color: black;"></i>
+                     </button>
+                  </div>
+                  <div class="add-product">
+                     <button class="add-product-button" onclick="addProduct()"> <i class="fa-regular fa-square-plus"
+                           style="margin-right: 0.3rem;"></i> Thêm sản phẩm </button>
+                  </div>
+                  <div class="add-product-display">
+                     <div class="add-product-container">
+                        <div class="add-product-form">
+                           <div class="add-product-form-header">
+                              <h2> Thêm sản phẩm mới </h2>
+                           </div>
+                           <table class="add-product-form-table">
+                              <tr>
+                                 <td> Mã sản phẩm </td>
+                                 <td>
+                                    <div class="add-prd-id-container">
+                                       <div class="add-prd-id"> </div>
+                                    </div>
+                                 </td>
+                              </tr>
+                              <tr>
+                                 <td> Tên tai nghe </td>
+                                 <td> <input type="text" value=""> </td>
+
+                              </tr>
+                              <tr>
+                                 <td style="height: 53.5px;"> Hình ảnh </td>
+                                 <td class="img-choose-file">
+                                    <input type="file" accept="image/*" onchange="">
+                                 </td>
+                              </tr>
+                              <tr>
+                                 <td> Kiểu tai nghe </td>
+                                 <td>
+                                    <select>
+                                       <option value="On ear"> On-ear </option>
+                                       <option value="In ear"> In-ear </option>
+                                       <option value="over-ear"> Over-ear </option>
+                                       <option value="earbud"> Earbud </option>
+                                    </select>
+                                 </td>
+                              </tr>
+                              <tr>
+                                 <td> Tên hãng </td>
+                                 <td>
+                                    <select>
+                                       <option value="Sony"> Sony </option>
+                                       <option value="Skullcandy"> Skullcandy </option>
+                                       <option value="Sennheiser"> Sennheiser </option>
+                                       <option value="Plantronics"> Plantronics </option>
+                                       <option value="Pioneer"> Pioneer </option>
+                                       <option value="Philips"> Philips </option>
+                                       <option value="NuForce"> NuForce </option>
+                                       <option value="Marshall"> Marshall </option>
+                                       <option value="Koss"> Koss </option>
+                                       <option value="JBL"> JBL </option>
+                                       <option value="FIIL Audio"> FIIL </option>
+                                       <option value="Audio-technica"> Audio-technica </option>
+                                       <option value="SoundMAGIC"> Sound MAGIC </option>
+                                       <option value="Beyerdynamic"> Beyerdynamic </option>
+                                       <option value="Beats"> Beats </option>
+                                       <option value="Bang & Olufsen"> Bang & Olufsen </option>
+                                       <option value="Astell & Kern"> Astell & Kern </option>
+                                       <option value="SoundPEATS"> SoundPEATS </option>
+                                       <option value="Sabbat"> Sabbat </option>
+                                       <option value="Monster"> Monster </option>
+                                       <option value="Huawei"> Huawei </option>
+                                       <option value="Havit"> Havit </option>
+                                       <option value="Defunc"> Defunc </option>
+                                    </select>
+                                 </td>
+                              </tr>
+                              <tr>
+                                 <td>Giá</td>
+                                 <td> <input type="text" value="800000"> </td>
+                              </tr>
+                           </table>
+                           <div class="add-product-button">
+                              <div class="accept-add">
+                                 <button class="accept-add-button"> Thêm sản phẩm </button>
+                              </div>
+                              <div class="cancel-add">
+                                 <button class="cancel-add-button"> Huỷ </button>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+
+               <div class="view-product-body">
+                  <div class="view-product-list">
+                     <table class="product-list-table">
+                        <thead>
+                           <tr class="product-list-table-title">
+                              <td> Mã </td>
+                              <td> Hình ảnh </td>
+                              <td> Tên hãng </td>
+                              <td> Tên </td>
+                              <td> Kiểu dáng </td>
+                              <td> Giá </td>
+                              <td> Số lượng </td>
+                              <td> <i class="fa-solid fa-pen" style="font-size: 14px;"></i> </td>
+                           </tr>
+                        </thead>
+
+                        <tr class="product-content">
+                           <td> 1076 </td>
+                           <td> <img id="product-thumbnail"
+                                 src="img/Shop tai nghe/On ear/FIIL Audio/Bluetooth FiiL Diva 2 Pro.jpg" alt="">
+                           </td>
+                           <td> JBL</td>
+                           <td> tai nghe JBL </td>
+                           <td> over-ears</td>
+                           <td> 800.000vnd</td>
+                           <td>
+                              <div class="product-update-button">
+                                 <button class="edit-product"> sửa </button>
+                                 <button class="delete-product"> xoá</button>
+                              </div>
+                           </td>
+                        </tr>
+
+                     </table>
+
+
+                     <div class="show-prd-img-display">
+                        <div class="show-prd-img-container">
+                           <div class="show-prd-image">
+                              <span class="close-prd-img">&times;</span>
+                              <img class="prd-image" src="" alt="">
+                           </div>
+                        </div>
+                     </div>
+
+
+                     <div class="edit-product-display">
+                        <div class="edit-product-container">
+
+                           <div class="edit-product-form">
+                              
+                              <div class="edit-product-form-header">
+                                 <h2> Tai nghe Sony WH-CH520 </h2>
+                              </div>
+                              <table class="edit-product-form-table">
+                                 <tr>
+                                    <td> Mã sản phẩm </td>
+                                    <td> 
+                                       <div class="editing-prd-id-container"> 
+                                          <div class="editing-prd-id"> hihi </div>
+                                       </div>
+                                    </td>
+                                 </tr>
+                                 <tr>
+                                    <td> Tên tai nghe </td>
+                                    <td> <input type="text" value="Sony WH-CH520"> </td>
+
+                                 </tr>
+                                 <tr>
+                                    <td style="height: 53.5px;"> Hình ảnh </td>
+                                    <td class="img-choose-file">
+                                       <img class="edit-product-image"
+                                          src="img/Shop tai nghe/On ear/Sony/Sony WH-CH520.jpg">
+                                       <input type="file" accept="image/*" onchange="">
+                                    </td>
+                                 </tr>
+                                 <tr>
+                                    <td> Kiểu tai nghe </td>
+                                    <td>
+                                       <select>
+                                          <option value="On ear"> On-ear </option>
+                                          <option value="In ear"> In-ear </option>
+                                          <option value="over-ear"> Over-ear </option>
+                                          <option value="earbud"> Earbud </option>
+                                       </select>
+                                    </td>
+                                 </tr>
+                                 <tr>
+                                    <td> Tên hãng </td>
+                                    <td>
+                                       <select>
+                                          <option value="Sony"> Sony </option>
+                                          <option value="Skullcandy"> Skullcandy </option>
+                                          <option value="Sennheiser"> Sennheiser </option>
+                                          <option value="Plantronics"> Plantronics </option>
+                                          <option value="Pioneer"> Pioneer </option>
+                                          <option value="Philips"> Philips </option>
+                                          <option value="NuForce"> NuForce </option>
+                                          <option value="Marshall"> Marshall </option>
+                                          <option value="Koss"> Koss </option>
+                                          <option value="JBL"> JBL </option>
+                                          <option value="FIIL Audio"> FIIL </option>
+                                          <option value="Audio-technica"> Audio-technica </option>
+                                          <option value="SoundMAGIC"> Sound MAGIC </option>
+                                          <option value="Beyerdynamic"> Beyerdynamic </option>
+                                          <option value="Beats"> Beats </option>
+                                          <option value="Bang & Olufsen"> Bang & Olufsen </option>
+                                          <option value="Astell & Kern"> Astell & Kern </option>
+                                          <option value="SoundPEATS"> SoundPEATS </option>
+                                          <option value="Sabbat"> Sabbat </option>
+                                          <option value="Monster"> Monster </option>
+                                          <option value="Huawei"> Huawei </option>
+                                          <option value="Havit"> Havit </option>
+                                          <option value="Defunc"> Defunc </option>
+                                       </select>
+                                    </td>
+                                 </tr>
+                                 <tr>
+                                    <td>Giá</td>
+                                    <td> <input type="text" value="800000"> </td>
+                                 </tr>
+                              </table>
+                              <div class="edit-product-button">
+                                 <div class="accept-edit">
+                                    <button class="accept-edit-button"> Thay đổi </button>
+                                 </div>
+                                 <div class="cancel-edit">
+                                    <button class="cancel-edit-button"> Huỷ </button>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+
+                     </div>
+
+                  </div>
+               </div>
+            </div>
+         </div>
+
+         <!-------------------------------Quản lí đơn hàng---------------------------------->
+         <div class="admin-order-mana-contain">
+            <div class="order-mana">
+               <div class="order-mana-header">
+                  <h2> DANH SÁCH ĐƠN HÀNG </h2>
+               </div>
+               <div class="order-mana-body">
+
+                  <!-- --------------------Đơn hàng đang chờ duyệt-------------------------------- -->
+                  <div class="order-list-contain">
+                     <div class="order-list-header">
+                        <h3>Đơn hàng chờ duyệt</h3>
+                        <div class="order-quantity" id="waiting-order-quantity">
+                           <h3> (2) </h3>
+                        </div>
+                        <form action="" id="waiting-order-day" class="form-approve">
+                           <label for="start-waiting-order-day-select">Từ: </label>
+                           <input type="date" min="" max="" value="" id="start-waiting-order-day-select" >
+                           <label for="end-waiting-order-day-select">Đến: </label>
+                           <input type="date" min="" max="" value="" id="end-waiting-order-day-select" >
+                        </form>
+                        <button class="view-btn" onclick="findWaitingOrdersDay()"> Xem </button>
+                        <button class="view-btn" onclick="manageRenderOrderList()"> Xem tất cả</button>
+                     </div>
+                     <div class="order-list-table-contain">
+                        <table class="order-list-table">
+                           <thead>
+                              <tr class="order-list-table-title">
+                                 <td> Mã đơn hàng </td>
+                                 <td> Sản phẩm </td>
+                                 <td> Tổng hoá đơn </td>
+                                 <td> Thời gian đặt hàng </td>
+                                 <td> Tùy chọn </td>
+                              </tr>
+                           </thead>
+                           <tbody id="order-list-body">
+
+                           </tbody>
+                        </table>
+                     </div>
+                  </div>
+                  <!---------------------------------------------- Đơn hàng đã xử lý-------------------------- -->
+                  <div class="order-list-contain">
+                     <div class="order-list-header">
+                        <h3>Đơn hàng đã xử lí </h3>
+                        <div class="order-quantity" id="processed-order-quantity">
+                           <h3> (2) </h3>
+                        </div>
+                        <form action="" id="processed-order-day"  class="form-approve">
+                           <label for="start-processed-day-select">Từ: </label>
+                           <input type="date" min="" max="" value="" id="start-processed-day-select" >
+
+                           <label for="end-processed-day-select">Đến: </label>
+                           <input type="date" min="" max="" value="" id="end-processed-day-select" >
+
+                        </form>
+                        <button class="view-btn" onclick="findProcessedOrdersDay()" > Xem </button>
+                        <button class="view-btn" onclick="manageRenderOrderListDealt()" > Xem tất cả </button>
+                     </div>
+                     <div class="order-list-table-contain">
+                        <table class="order-list-table">
+                           <thead>
+                              <tr class="order-list-table-title">
+                                 <td> Mã đơn hàng </td>
+                                 <td> Sản phẩm </td>
+                                 <td> Tổng hoá đơn </td>
+                                 <td> Thời gian đặt hàng </td>
+                                 <td> Lịch sử </td>
+                              </tr>
+                           </thead>
+                           <tbody id="order-list-body-dealt">
+                              
+                           </tbody>
+                        </table>
+                     </div>
+                  </div>
+
+
+               </div>
+            </div>
+         </div>
+
+
+         <!----------------------------Tài khoản khách hàng------------------------------------>
+
+         <div class="view-customer-contain">
+            <div class="view-customer">
+               <div class="view-customer-header">
+                  <h2> DANH SÁCH KHÁCH HÀNG </h2>
+               </div>
+               <div class="view-customer-body">
+                  <div class="view-customer-account-list">
+                     <table class="account-list-table">
+                        <thead>
+                           <tr class="account-list-table-title">
+                              <td> Tên đăng nhập </td>
+                              <td> Mật khẩu </td>
+                              <td> Địa chỉ </td>
+                              <td> Số điện thoại </td>
+                           </tr>
+                        </thead>
+                        <tbody id="manage-customer">
+                           <tr class="account-content">
+                              <td> Thang </td>
+                              <td> abcxyzzz </td>
+                              <td> 273 An Dương Vương, P3, Quận 5, TPHCM </td>
+                              <td> 0788889999 </td>
+                           </tr>
+                        </tbody>
+                     </table>
+                  </div>
+               </div>
+            </div>
+         </div>
+
+
+         <!-- -------------------------------------Doanh thu--------------------------------- -->
+         <div class="view-sold-order-contain">
+            <div class="view-sold-order">
+               <div class="view-sold-order-header">
+                  <h2> DOANH THU <span id="income-category">THEO SẢN PHẨM</span> </h2>
+               </div>
+               <div class="view-sold-order-body">
+                  <div class="view-sold-order-list">
+                     <table class="sold-order-list-table">
+                        <thead>
+                           <tr class="sold-order-list-table-title">
+                              <td> Id sản phẩm </td>
+                              <td> Tên sản phẩm </td>
+                              <td> Giá </td>
+                              <td> Số lượng </td>
+                              <td> Doanh thu </td>
+                           </tr>
+                        </thead>
+                        <tbody id="sold-order-body">
+
+                        </tbody>
+                     </table>
+                  </div>
+                  <div class="total-sold-order">Tổng doanh thu: </div>
+               </div>
+            </div>
+         </div>
+
+
+      </div>
+   </div>
+
+   <script src="admin.js"></script>
+
+</body>
