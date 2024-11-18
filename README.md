@@ -1,1 +1,1 @@
-Đồ án này không phải là bản full, vì lúc đấy chưa biết đến github, đồ án bản full nằm trong tay nhóm trưởng đã không còn giữ nữa, đây là bản lưu trữ. Tham khảo để làm dồ án Lập trình Web và ứng dụng nhé.
+Đồ án này không phải là bản full, vì lúc đấy chưa biết đến github, đồ án bản full nằm trong tay nhóm trưởng đã không còn giữ nữa, đây là bản lưu trữ còn trường tồn. Tham khảo để làm dồ án Lập trình Web và ứng dụng nhé.
